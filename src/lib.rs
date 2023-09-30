@@ -20,6 +20,7 @@ use ffmpeg::{rescale, Rational, Rescale};
 use ffmpeg::{software, ChannelLayout};
 use parking_lot::Mutex;
 use ringbuf::SharedRb;
+use sdl2::Sdl;
 use sdl2::audio::{self, AudioCallback, AudioFormat, AudioSpecDesired};
 use std::sync::Arc;
 use std::time::UNIX_EPOCH;
@@ -1048,6 +1049,6 @@ fn video_frame_to_image(frame: Video) -> ColorImage {
     ColorImage { size, pixels }
 }
 
-// pub fn init() {
-//     ffmpeg::init().unwrap();
-// }
+pub fn init() -> Result<Sdl, String> {
+    sdl2::init()
+}
